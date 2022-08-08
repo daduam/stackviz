@@ -7,7 +7,6 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
 
 <HBox alignment="CENTER" spacing="24.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.github.daduam.StackVizController">
   <children>
@@ -16,21 +15,21 @@
         <VBox spacing="8.0">
           <children>
             <Label text="Enter a string to push onto the stack" wrapText="true" />
-            <TextField maxWidth="400.0" promptText="Type something here" />
-            <Button mnemonicParsing="false" text="PUSH" />
+            <TextField fx:id="stackItemTextField" maxWidth="400.0" onAction="#handlePushButtonAction" promptText="Type something here" />
+            <Button fx:id="pushButton" mnemonicParsing="false" onAction="#handlePushButtonAction" text="PUSH" />
           </children>
         </VBox>
         <VBox spacing="8.0">
           <children>
             <Label text="Press to remove items from the stack" wrapText="true" />
-            <Button mnemonicParsing="false" text="POP" />
+            <Button fx:id="popButton" mnemonicParsing="false" onAction="#handlePopButtonAction" text="POP" />
           </children>
         </VBox>
       </children>
     </VBox>
     <VBox spacing="8.0" HBox.hgrow="ALWAYS">
       <children>
-        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Stack - pushed items are displayed here" />
+        <Label text="Stack - pushed items are displayed here" wrapText="true" />
         <ListView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
       </children>
     </VBox>
