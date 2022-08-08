@@ -4,10 +4,11 @@ import java.util.Stack;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 
-// todo
-// show items in ListView
+// TODO
+// reverse listview order (flip)
 
 public class StackVizController {
   private Stack<String> stack;
@@ -31,9 +32,11 @@ public class StackVizController {
   private Button popButton;
 
   @FXML
+  private ListView<String> listView;
+
+  @FXML
   private void handlePushButtonAction() {
-    String newItem = stackItemTextField.getText();
-    pushItemToStack(newItem);
+    pushItemToStack(stackItemTextField.getText());
     stackItemTextField.clear();
     popButton.setDisable(false);
   }
@@ -49,14 +52,15 @@ public class StackVizController {
       return;
     }
     stack.push(item);
-    // update ListView
-    System.out.println(stack);
+    listView.getItems().add(item);
   }
 
   private void popItemFromStack() {
+    if (stack.isEmpty()) {
+      return;
+    }
     stack.pop();
-    // update ListView
-    System.out.println(stack);
+    listView.getItems().remove(listView.getItems().size() - 1);
   }
 
   private void disablePopButtonIfStackIsEmpty() {

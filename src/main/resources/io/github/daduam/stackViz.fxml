@@ -30,7 +30,7 @@
     <VBox spacing="8.0" HBox.hgrow="ALWAYS">
       <children>
         <Label text="Stack - pushed items are displayed here" wrapText="true" />
-        <ListView prefHeight="200.0" prefWidth="200.0" VBox.vgrow="ALWAYS" />
+        <ListView fx:id="listView" VBox.vgrow="ALWAYS" />
       </children>
     </VBox>
   </children>
